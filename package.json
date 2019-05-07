@@ -1,0 +1,19 @@
+{
+  "name": "backend-graphql",
+  "version": "0.0.1",
+  "description": "boilerplate for backend development",
+  "main": "app.js",
+  "repository": "https://github.com/Masavi/backend-graphql.git",
+  "author": "maui <maui@devf.mx>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "graphql-yoga": "^1.17.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.5"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  }
+}

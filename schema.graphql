@@ -1,0 +1,36 @@
+type Query {
+	holamundo:Prueba
+}
+
+type Mutation {
+    signup(data:UserCreateInput!): Auth
+    login(email:String!, password:String!): Auth
+    createUser(data: UserCreateInput!): User
+}
+
+type Prueba {
+    mensaje:String!
+    codigo:Int!
+}
+
+type Auth {
+    token:String!
+    mensaje:String!
+}
+
+input UserCreateInput {
+    first_name: String!
+    last_name: String!
+    email: String!
+    password: String!
+    gender: String
+}
+
+type User {
+    _id: String!
+    first_name: String!
+    last_name: String!
+    email: String!
+    password: String
+    gender: String
+}
