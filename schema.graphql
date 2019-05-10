@@ -1,29 +1,62 @@
+scalar Upload
 type Query {
 	holamundo:Prueba
 }
 
 type Mutation {
     signup(data:UserCreateInput!): Auth
-    login(email:String!, password:String!): Auth
+    registerRestaurant(data:UserRestaurantInput!): Auth
+    createDish(data: DishRestaurantInput!): Dish
+    updateDish(id:ID!,data:DishUpdateInput): Dish
+    deleteDish(id:ID!):String
+    login(email:String!, password:String!,typeUser:TypeUser!): Auth
     createUser(data: UserCreateInput!): User
 }
-
+enum TypeUser{
+    USER1
+    USER2
+}
 type Prueba {
     mensaje:String!
     codigo:Int!
 }
-
+type Dish {
+     _id: String!
+    name:String!
+    image:String!
+    price:Float!
+}
 type Auth {
     token:String!
     mensaje:String!
 }
-
+input UserRestaurantInput{
+    name:String!
+    description:String!
+    image:Upload!
+    location:String!
+    first_name:String!
+    last_name:String!
+    email:String!
+    password:String!
+}
+input DishUpdateInput{
+    name:String!
+    #image:Upload!DishRestaurantInput
+    price:Float!
+}
+input DishRestaurantInput{
+    name:String!
+    image:Upload!
+    description:String!
+    price:Float!
+}
 input UserCreateInput {
     first_name: String!
     last_name: String!
     email: String!
     password: String!
-    gender: String
+    
 }
 
 type User {
@@ -32,5 +65,4 @@ type User {
     last_name: String!
     email: String!
     password: String
-    gender: String
 }

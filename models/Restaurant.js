@@ -1,37 +1,51 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
-
-const UserSchema = new mongoose.Schema({
-    first_name: { 
+const Schema = mongoose.Schema;
+const RestaurantSchema = new mongoose.Schema({
+    name: { 
         type: String, 
         required: true 
     }, 
-    last_name: { 
+    description: { 
         type: String, 
         required: true 
     },
-    email: { 
+    image: { 
         type: String,
         required: true,
     },
-    password: {
+    location: {
         type: String,
         required: true,
      },
+     first_name:{
+         type:String,
+         required:true
+     },
+     last_name:{
+         type:String,
+         required:true
+     },
+     email:{
+         type:String,
+         required:true
+     },
+     password:{
+        type:String,
+        required:true
+     },
+     dishes:[{
+        type: Schema.Types.ObjectId,
+		ref: "Dishes"
+     }],
      typeuser:{
-        type:Number,
-        default:1
-    }
-     //,
-    // gender: {
-    //     type: String,
-    //     enum: ["Male", "Female", "Undefined"],
-    //     default: "Undefined",
-    // }
-});
+         type:Number,
+         default:2
+     }
 
-UserSchema.pre('save', function(next){
+});
+RestaurantSchema.pre('save', function(next){
     let user = this;
 
     // only hash the password if it has been modified (or is new)
@@ -52,6 +66,6 @@ UserSchema.pre('save', function(next){
     });
 });
 
-const Users = mongoose.model("Users", UserSchema);
+const Restaurant = mongoose.model("Restaurant", RestaurantSchema);
 
-module.exports = Users;
+module.exports = Restaurant;

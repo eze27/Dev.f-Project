@@ -13,7 +13,7 @@ const createToken = (args) => {
 
     return token;
 };
-
+// registra Usuarios
 const signup = (data) => {
     // Englobamos el código en una promesa para manejarlo asíncronamente
     return new Promise( (resolve, reject) => {
@@ -29,11 +29,12 @@ const signup = (data) => {
     });
 };
 
-const login = ({ email, password }) => {
+const login = ({ email, password, typeUser}) => {
 
     return new Promise((resolve, reject) => {
         // Verificar si existe el usuario con el email proporcionado...
-        getUserByEmail(email).then( user => {
+        getUserByEmail(email,typeUser).then( user => {
+            console.log("datauser " , user);
             // Comparar contraseñas para validar la entrada
             bcrypt.compare(password, user.password, (err, isValid) => {
                 if (err) reject(err);
