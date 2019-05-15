@@ -16,9 +16,14 @@ const getUserByEmail = (email,typeUser) => {
 const getUserById = (_id) => {
     return Restaurant.findOne({ _id: _id });
 }
+//
+const getUsers = () => {
+    return Users.find();
+}
 
 module.exports = {
     createUser,
     getUserByEmail,
     getUserById,
+    getUsers
 }

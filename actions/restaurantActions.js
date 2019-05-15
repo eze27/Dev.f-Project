@@ -17,9 +17,20 @@ const saveRestaurant = (data) =>{
    return Restaurant.create(data);
 };
 
+const getRestaurants = ()=>{
+    return Restaurant.find();
+}
 
-
+const getByNameRestaurant =  (fields)=>{
+    let search = {};
+  
+    if ( fields.name ) { search.name = fields.name; }
+    
+    return Restaurant.find(search);
+}
 
 module.exports = {
-    createRestaurant
+    createRestaurant,
+    getRestaurants,
+    getByNameRestaurant
 }

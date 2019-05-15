@@ -1,6 +1,10 @@
 scalar Upload
 type Query {
-	holamundo:Prueba
+	getUsers: [User]
+    getRestaurants:[Restaurant]
+    getByNameRestaurant(name:String):[Restaurant]
+    getDishes:[Dish]
+    getByNameDish(name:String):[Dish]
 }
 
 type Mutation {
@@ -40,6 +44,7 @@ input UserRestaurantInput{
     email:String!
     password:String!
 }
+
 input DishUpdateInput{
     name:String!
     #image:Upload!DishRestaurantInput
@@ -65,4 +70,15 @@ type User {
     last_name: String!
     email: String!
     password: String
+}
+type Restaurant {
+    _id:String!
+    name:String!
+    description:String!
+    image:Upload!
+    location:String!
+    first_name:String!
+    last_name:String!
+    email:String!
+ 
 }

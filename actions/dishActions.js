@@ -14,9 +14,21 @@ const  deleteDishById = (id) => {
 	return Dish.findByIdAndRemove({_id:id});
 };
 
+const getDishes = ()=>{
+ return  Dish.find();
+}
+const getByNameDish = (fields)=>{
+   let search = {};
+  
+    if ( fields.name ) { search.name = fields.name; }
+    
+    return Dish.find({'name': new RegExp('^'+fields.name+'$','i')});
+}
 module.exports = {
    createDish,
    addDishToRestaurant,
    updateDishById,
-   deleteDishById
+   deleteDishById,
+   getDishes,
+   getByNameDish
 }
