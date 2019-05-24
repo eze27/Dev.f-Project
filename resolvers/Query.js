@@ -10,7 +10,9 @@ const getUsers = () =>{
 }
 //obtiene todos los restaurantes
 const getRestaurants = (_,args,context,info) =>{
-	return actions.getRestaurants().then(users => users).catch((err)=>{
+	
+	
+	return actions.getRestaurants().then(users =>  users).catch((err)=>{
 		console.log(err);
 	})
 }
